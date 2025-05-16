@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Kart</title>
+    <!-- Include EmulatorJS CSS if provided -->
+    <link rel="stylesheet" href="./data/emulator.min.css">
     <style>
-        body { margin: 0; overflow: hidden; background-color: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        canvas { display: block; max-width: 100%; max-height: 100%; }
+        /* Optional: Style the container */
+        body { margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #000; }
+        #game { width: 100%; max-width: 800px; aspect-ratio: 4/3; /* Adjust aspect ratio based on system */ }
+         canvas { width: 100%; height: 100%; } /* Make canvas fill container */
     </style>
 </head>
 <body>
-    <canvas id="game"></canvas>
+
+    <!-- This is where the emulator will render -->
+    <div id="game"></div>
+
+    <!-- Include the main EmulatorJS script -->
     <script src="./data/emulator.min.js"></script>
+
+    <!-- Script to configure and start the emulator -->
     <script>
-        EJS_player = '#game';
-        EJS_core = 'gba'; // Replace 'nes' with the core corresponding to your ROM's system
-                           // Examples: 'snes', 'gba', 'genplusgx' (Sega Genesis), etc.
-        EJS_gameUrl = './roms/mk.gba'; // Adjust the path to your ROM file
-        EJS_biosUrl = ''; // Only needed for certain systems (e.g., PlayStation)
-        EJS_cheats = '';
-        EJS_startOnLoad = true; // This tells EmulatorJS to load the game immediately
-        EJS_scaleMode = 'scale'; // Options: 'scale', 'integer', 'fit', 'stretch'
-        EJS_aspectRatio = '4:3'; // Adjust based on the original aspect ratio of the system
-        EJS_autoSaveSlots = true;
-        EJS_mouseLock = false; // Disable mouse lock unless needed for specific cores
+        // Wait for the window to load before initializing EJS
+        window.onload = function() {
+            // *** IMPORTANT: Configure EJS here ***
+            EJS_init('game', { // 'game' is the ID of the div/canvas element above
+                'gameUrl': './roms/mk.gba', // <-- REPLACE with the actual path and filename of YOUR ROM
+                'system': 'gba',               // <-- REPLACE with the system for your ROM (e.g., 'nes', 'snes', 'gb', 'gba', 'n64', 'psx')
+                'core': 'mgba',               // <-- REPLACE with the appropriate core file name (e.g., 'nes', 'snes9x', 'gambatte', 'mgba', 'n64', 'psx') - Check your emulatorjs/cores folder for names (usually without .wasm/.js extension)
+                'autoplay': true,               // <-- THIS IS KEY: Starts the game automatically
+                'debug': true,                 // Set to true for debugging output in the browser console
+                // Add any other EJS configuration options you need (controls, shaders, etc.)
+            });
+        };
     </script>
+
 </body>
 </html>
