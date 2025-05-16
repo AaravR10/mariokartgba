@@ -9,12 +9,12 @@
 </head>
 <body>
     <canvas id="game"></canvas>
-    <script src="data/emulator.min.js"></script>
+    <script src="./data/emulator.min.js"></script>
     <script>
         EJS_player = '#game';
         EJS_core = 'gba'; // Replace 'nes' with the core corresponding to your ROM's system
                            // Examples: 'snes', 'gba', 'genplusgx' (Sega Genesis), etc.
-        EJS_gameUrl = 'roms/mk.gba'; // Adjust the path to your ROM file
+        EJS_gameUrl = './roms/mk.gba'; // Adjust the path to your ROM file
         EJS_biosUrl = ''; // Only needed for certain systems (e.g., PlayStation)
         EJS_cheats = '';
         EJS_startOnLoad = true; // This tells EmulatorJS to load the game immediately
