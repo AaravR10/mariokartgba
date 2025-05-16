@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Awesome Game</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        canvas { display: block; max-width: 100%; max-height: 100%; }
+    </style>
+</head>
+<body>
+    <canvas id="game"></canvas>
+    <script src="emulator.js"></script>
+    <script>
+        EJS_player = '#game';
+        EJS_core = 'gba'; // Replace 'nes' with the core corresponding to your ROM's system
+                           // Examples: 'snes', 'gba', 'genplusgx' (Sega Genesis), etc.
+        EJS_gameUrl = 'roms/mk.gba'; // Adjust the path to your ROM file
+        EJS_biosUrl = ''; // Only needed for certain systems (e.g., PlayStation)
+        EJS_cheats = '';
+        EJS_startOnLoad = true; // This tells EmulatorJS to load the game immediately
+        EJS_scaleMode = 'scale'; // Options: 'scale', 'integer', 'fit', 'stretch'
+        EJS_aspectRatio = '4:3'; // Adjust based on the original aspect ratio of the system
+        EJS_autoSaveSlots = true;
+        EJS_mouseLock = false; // Disable mouse lock unless needed for specific cores
+    </script>
+</body>
+</html>
